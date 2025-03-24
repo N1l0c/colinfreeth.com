@@ -1,5 +1,5 @@
 // src/pages/autobach.tsx
-import React from "react";
+// import React from "react"; -- Unnecessary import since React 17+ and throws Vercel error
 
 export default function AutoBachPage() {
   return (
