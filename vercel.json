@@ -1,16 +1,20 @@
 {
-    "rewrites": [
-      {
-        "source": "/blog",
-        "destination": "https://astro-blog-one-wine.vercel.app/"
-      },
-      {
-        "source": "/blog/",
-        "destination": "https://astro-blog-one-wine.vercel.app"
-      },
-      {
-        "source": "/blog/(.*)",
-        "destination": "https://astro-blog-one-wine.vercel.app/$1"
-      }
-    ]
+  "rewrites": [
+    {
+      "source": "/blog",
+      "destination": "https://astro-blog-one-wine.vercel.app"
+    },
+    {
+      "source": "/blog/",
+      "destination": "https://astro-blog-one-wine.vercel.app"
+    },
+    {
+      "source": "/blog/(.*)",
+      "destination": "https://astro-blog-one-wine.vercel.app/$1"
+    },
+    {
+      "source": "/blog/(.*)/",
+      "destination": "https://astro-blog-one-wine.vercel.app/$1"
+    }
+  ]
 }

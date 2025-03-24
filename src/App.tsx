@@ -2,10 +2,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import NalityAV from '../n-ality-av/src/App';
 import STTComparison from './pages/STTComparison';
 
-const blogLink =
-  import.meta.env.DEV
-    ? 'http://localhost:4321/blog'
-    : '/blog';
+const blogLink = import.meta.env.DEV
+  ? 'http://localhost:4321'
+  : '/blog';
 
 function App() {
   return (
