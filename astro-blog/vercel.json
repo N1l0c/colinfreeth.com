@@ -1,0 +1,6 @@
+{
+    "rewrites": [
+      { "source": "/blog", "destination": "/" },
+      { "source": "/blog/(.*)", "destination": "/$1" }
+    ]
+  }
