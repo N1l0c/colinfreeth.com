@@ -5,6 +5,10 @@
         "destination": "https://astro-blog-one-wine.vercel.app/"
       },
       {
+        "source": "/blog/",
+        "destination": "https://astro-blog-one-wine.vercel.app"
+      },
+      {
         "source": "/blog/(.*)",
         "destination": "https://astro-blog-one-wine.vercel.app/$1"
       }
