@@ -34,7 +34,12 @@ function App() {
 
         <span style={{ color: 'white', opacity: 0.5 }}>|</span>
 
-        <a href={blogLink} style={{ color: 'white', textDecoration: 'none' }}>
+        <a
+          href={blogLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: 'white', textDecoration: 'none' }}
+        >
           Blog
         </a>
       </nav>
