@@ -1,6 +1,12 @@
 {
-  "rewrites": [
-    { "source": "/blog", "destination": "/index.html" },
-    { "source": "/blog/(.*)", "destination": "/$1" }
-  ]
-}
+    "rewrites": [
+      {
+        "source": "/blog",
+        "destination": "https://astro-blog-one-wine.vercel.app/"
+      },
+      {
+        "source": "/blog/(.*)",
+        "destination": "https://astro-blog-one-wine.vercel.app/$1"
+      }
+    ]
+  }
