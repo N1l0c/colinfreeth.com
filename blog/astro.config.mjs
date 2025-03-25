@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'blog.colinfreeth.com/',
+	site: 'https://blog.colinfreeth.com/',
 	integrations: [mdx(), sitemap()],
 });
