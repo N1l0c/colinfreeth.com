@@ -36,8 +36,6 @@ function App() {
 
         <a
           href={blogLink}
-          target="_blank"
-          rel="noopener noreferrer"
           style={{ color: 'white', textDecoration: 'none' }}
         >
           Blog
