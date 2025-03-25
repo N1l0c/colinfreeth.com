@@ -4,7 +4,7 @@ import STTComparison from './pages/STTComparison';
 
 const blogLink = import.meta.env.DEV
   ? 'http://localhost:4321'
-  : '/blog';
+  : 'blog.colinfreeth.com/';
 
 function App() {
   return (
