@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import NalityAV from '../n-ality-av/src/App';
 import STTComparison from './pages/STTComparison';
-import LorenzSynthApp from "./lorenz-synth/src/App";
+import LorenzSynthApp from "./pages/LorenzSynth";
 
 const blogLink = import.meta.env.DEV
   ? 'http://localhost:4321'

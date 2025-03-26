@@ -1,11 +1,12 @@
 // src/App.tsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as Tone from "tone";
 import { useLorenzAttractor } from "./audio/useLorenzAttractor";
 
 export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  
+  const [started, setStarted] = useState(false);
+
   const { attractors, update } = useLorenzAttractor(3); // Three attractors for CMY
 
   useEffect(() => {
@@ -32,28 +33,35 @@ export default function App() {
         ctx.beginPath();
         ctx.arc(x, y, 1.5, 0, 2 * Math.PI);
         ctx.fillStyle = colors[i];
-        // Something broken here, applying blur fills entire scren with yellow-green haze
-       // ctx.shadowColor = colors[i];
-       // ctx.shadowBlur = 10;
         ctx.fill();
       });
 
       requestAnimationFrame(draw);
     };
 
-    setTimeout(() => {
-      draw();
-    }, 100);
-  }, []);
+    if (started) {
+      setTimeout(() => {
+        draw();
+      }, 100);
+    }
+  }, [started]);
 
   return (
     <>
-      <button
-        onClick={() => Tone.start()}
-        className="absolute top-4 left-4 bg-white text-black px-4 py-2 rounded z-10"
-      >
-        Start Audio
-      </button>
+      {!started && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black text-white z-20">
+          <h1 className="text-3xl font-bold mb-4">Lorenz Synth</h1>
+          <button
+            onClick={async () => {
+              await Tone.start();
+              setStarted(true);
+            }}
+            className="bg-white text-black font-medium px-6 py-3 rounded hover:bg-gray-200 transition"
+          >
+            Tap to Start Audio
+          </button>
+        </div>
+      )}
       <canvas ref={canvasRef} className="w-full h-full block" />
     </>
   );
