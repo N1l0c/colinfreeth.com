@@ -1,4 +1,3 @@
-// src/App.tsx
 import { useEffect, useRef, useState } from "react";
 import * as Tone from "tone";
 import { useLorenzAttractor } from "./audio/useLorenzAttractor";
@@ -7,7 +6,7 @@ export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [started, setStarted] = useState(false);
 
-  const { attractors, update } = useLorenzAttractor(3); // Three attractors for CMY
+  const { attractors, update, startOscillators } = useLorenzAttractor(3); // Three attractors for CMY
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -47,22 +46,49 @@ export default function App() {
   }, [started]);
 
   return (
-    <>
+    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', margin: 0, padding: 0 }}>
       {!started && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black text-white z-20">
-          <h1 className="text-3xl font-bold mb-4">Lorenz Synth</h1>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '2rem',
+            backgroundColor: 'black',
+            color: 'white',
+            textAlign: 'center',
+            zIndex: 10,
+          }}
+        >
+          <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Lorenz Synth</h1>
           <button
             onClick={async () => {
               await Tone.start();
+              startOscillators();
               setStarted(true);
             }}
-            className="bg-white text-black font-medium px-6 py-3 rounded hover:bg-gray-200 transition"
+            style={{
+              padding: '1rem 2rem',
+              fontSize: '1rem',
+              background: 'white',
+              color: 'black',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              marginTop: '1rem',
+            }}
           >
             Tap to Start Audio
           </button>
         </div>
       )}
       <canvas ref={canvasRef} className="w-full h-full block" />
-    </>
+    </div>
   );
 }

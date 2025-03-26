@@ -1,16 +1,16 @@
 import { useEffect, useRef } from "react";
 import * as Tone from "tone";
 
-export type Attractor = {
-  x: number;
-  y: number;
-  z: number;
-};
+type Attractor = { x: number; y: number; z: number };
+const sigma = 10, rho = 28, beta = 8 / 3, dt = 0.01;
 
-const sigma = 10;
-const rho = 28;
-const beta = 8 / 3;
-const dt = 0.01;
+function getQuantizedFreq(x: number, voice: 'bass' | 'alto' | 'soprano') {
+  const scale = [0, 2, 3, 5, 7, 8, 11]; // Harmonic minor or Dorian feel
+  const base = voice === 'bass' ? 36 : voice === 'alto' ? 48 : 60; // MIDI: C2, C3, C4
+  const pos = Math.floor(((x + 30) / 60) * scale.length);
+  const midi = base + scale[pos % scale.length];
+  return Tone.Frequency(midi, "midi").toFrequency();
+}
 
 export function useLorenzAttractor(count: number) {
   const attractorRef = useRef<Attractor[]>(
@@ -26,17 +26,11 @@ export function useLorenzAttractor(count: number) {
   useEffect(() => {
     synths.current = attractorRef.current.map(() => {
       const panVol = new Tone.PanVol().toDestination();
-      const osc = new Tone.Oscillator({
-        frequency: 440,
-        type: "sine",
-      }).connect(panVol);
-      osc.start();
+      const osc = new Tone.Oscillator({ frequency: 440, type: "sine" }).connect(panVol);
       return osc;
     });
 
-    return () => {
-      synths.current.forEach(osc => osc.dispose());
-    };
+    return () => synths.current.forEach((osc) => osc.dispose());
   }, []);
 
   const update = () => {
@@ -44,12 +38,12 @@ export function useLorenzAttractor(count: number) {
       const dx = sigma * (a.y - a.x);
       const dy = a.x * (rho - a.z) - a.y;
       const dz = a.x * a.y - beta * a.z;
-
       a.x += dx * dt;
       a.y += dy * dt;
       a.z += dz * dt;
 
-      const freq = 220 + ((a.x + 30) / 60) * 660;
+      const voice: 'bass' | 'alto' | 'soprano' = i === 0 ? 'bass' : i === 1 ? 'alto' : 'soprano';
+      const freq = getQuantizedFreq(a.x, voice);
       const pan = Math.max(-1, Math.min(1, a.y / 30));
 
       const synth = synths.current[i];
@@ -62,5 +56,13 @@ export function useLorenzAttractor(count: number) {
     });
   };
 
-  return { attractors: attractorRef.current, update };
+  const startOscillators = () => {
+    synths.current.forEach((osc) => {
+      if (!osc.state || osc.state !== "started") {
+        osc.start();
+      }
+    });
+  };
+
+  return { attractors: attractorRef.current, update, startOscillators };
 }
