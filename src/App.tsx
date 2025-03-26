@@ -33,6 +33,8 @@ function App() {
           STT Compare
         </Link>
 
+        <span style={{ color: 'white', opacity: 0.5 }}>|</span>
+
         <Link to="/lorenz-synth" style={{ color: 'white', textDecoration: 'none' }}>
           Lorenz Synth
         </Link>
