@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import NalityAV from '../n-ality-av/src/App';
 import STTComparison from './pages/STTComparison';
+import LorenzSynthApp from "./lorenz-synth/src/App";
 
 const blogLink = import.meta.env.DEV
   ? 'http://localhost:4321'
@@ -32,6 +33,10 @@ function App() {
           STT Compare
         </Link>
 
+        <Link to="/lorenz-synth" style={{ color: 'white', textDecoration: 'none' }}>
+          Lorenz Synth
+        </Link>
+
         <span style={{ color: 'white', opacity: 0.5 }}>|</span>
 
         <a
@@ -45,6 +50,7 @@ function App() {
         <Routes>
           <Route path="/" element={<NalityAV />} />
           <Route path="/compare-stt" element={<STTComparison />} />
+          <Route path="/lorenz-synth" element={<LorenzSynthApp />} />
         </Routes>
       </div>
     </Router>
