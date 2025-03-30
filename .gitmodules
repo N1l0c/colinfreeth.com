@@ -5,5 +5,5 @@
 	path = AutoBach
 	url = https://github.com/N1l0c/AutoBach.git
 [submodule "lorentz-synth"]
-	path = lorentz-synth
+	path = lorenz-synth
 	url = https://github.com/N1l0c/lorentz-synth

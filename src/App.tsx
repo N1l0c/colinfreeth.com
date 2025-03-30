@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import NalityAV from '../n-ality-av/src/App';
 import STTComparison from './pages/STTComparison';
-import LorenzSynthApp from "./pages/LorenzSynth";
+import LorenzSynthApp from "../lorenz-synth/src/App";  // Updated path
 
 const blogLink = import.meta.env.DEV
   ? 'http://localhost:4321'
@@ -10,24 +10,24 @@ const blogLink = import.meta.env.DEV
 function App() {
   return (
     <Router>
-      <div>
-      <nav
-        style={{
-          position: 'absolute',
-          top: '1rem',
-          left: '1rem',
-          zIndex: 9999,
-          backgroundColor: 'rgba(255, 255, 255, 0.2)',
-          padding: '0.5rem 1rem',
-          borderRadius: '8px',
-          color: 'white',
-          fontWeight: 'bold',
-          textDecoration: 'none',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-          backdropFilter: 'blur(10px)', // Optional: smooth frosted look
-        }}
+      <div className="app-container">
+        <nav
+          style={{
+            position: 'fixed', // Changed from absolute to fixed
+            top: '1rem',
+            left: '1rem',
+            zIndex: 9999,
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            padding: '0.5rem 1rem',
+            borderRadius: '8px',
+            color: 'white',
+            fontWeight: 'bold',
+            textDecoration: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            backdropFilter: 'blur(10px)', // Optional: smooth frosted look
+          }}
         > 
 
         <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
@@ -57,9 +57,9 @@ function App() {
       </nav>
 
         <Routes>
-          <Route path="/" element={<NalityAV />} />
-          <Route path="/compare-stt/" element={<STTComparison />} />
-          <Route path="/lorenz-synth/" element={<LorenzSynthApp />} />
+          <Route path="/" element={<div className="main-container"><NalityAV /></div>} />
+          <Route path="/compare-stt/" element={<div className="embedded-app"><STTComparison /></div>} />
+          <Route path="/lorenz-synth/" element={<div className="embedded-app"><LorenzSynthApp /></div>} />
         </Routes>
       </div>
     </Router>
