@@ -1,0 +1,16 @@
+---
+const { title, description, pubDate } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>{title}</title>
+  </head>
+  <body class="bg-black text-white font-sans max-w-3xl mx-auto p-8">
+    <article class="prose prose-invert">
+      <h1>{title}</h1>
+      <p class="text-sm text-gray-400">{new Date(pubDate).toDateString()}</p>
+      <slot />
+    </article>
+  </body>
+</html>

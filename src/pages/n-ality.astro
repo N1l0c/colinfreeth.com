@@ -1,0 +1,14 @@
+---
+import NAlityWrapper from '../components/NAlityWrapper';
+import Header from '../components/Header.astro';
+---
+
+<html lang="en">
+  <head>
+    <title>n-ality-av</title>
+  </head>
+  <body class="bg-black text-white w-screen h-screen overflow-hidden">
+    <Header />
+    <NAlityWrapper client:only="react" />
+  </body>
+</html>

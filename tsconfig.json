@@ -1,13 +1,30 @@
 {
-  "files": [],
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "lorenz-synth/*": ["./lorenz-synth/src/*"]
-    }
+      "@/*": ["src/*"],
+      "lorenz-synth/*": ["./lorenz-synth/src/*"],
+      "n-ality-av/*": ["./n-ality-av/src/*"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "types": ["./.astro/types.d.ts"]
   },
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+  "include": [
+    "src/**/*",
+    "public/**/*",
+    ".astro/**/*",
+    "*.ts",
+    "*.tsx",
+    "*.astro"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "AutoBach",
+    "mandlebrot-synth",
+    "lorentz-synth",
+    "n-ality-av"
   ]
 }
