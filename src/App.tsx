@@ -58,8 +58,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<NalityAV />} />
-          <Route path="/compare-stt" element={<STTComparison />} />
-          <Route path="/lorenz-synth" element={<LorenzSynthApp />} />
+          <Route path="/compare-stt/" element={<STTComparison />} />
+          <Route path="/lorenz-synth/" element={<LorenzSynthApp />} />
         </Routes>
       </div>
     </Router>
