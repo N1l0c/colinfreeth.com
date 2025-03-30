@@ -28,16 +28,23 @@ function App() {
           gap: '0.75rem',
           backdropFilter: 'blur(10px)', // Optional: smooth frosted look
         }}
-      >
-        <Link to="/compare-stt" style={{ color: 'white', textDecoration: 'none' }}>
-          STT Compare
-        </Link>
+        > 
 
+        <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
+          N-ality AV
+        </Link>
+      
         <span style={{ color: 'white', opacity: 0.5 }}>|</span>
 
         <Link to="/lorenz-synth" style={{ color: 'white', textDecoration: 'none' }}>
           Lorenz Synth
         </Link>
+
+        <span style={{ color: 'white', opacity: 0.5 }}>|</span>
+
+        <Link to="/compare-stt" style={{ color: 'white', textDecoration: 'none' }}>
+            STT Compare
+          </Link>
 
         <span style={{ color: 'white', opacity: 0.5 }}>|</span>
 
