@@ -7,6 +7,10 @@
     {
       "source": "/blog/(.*)",
       "destination": "https://astro-blog-one-wine.vercel.app/$1/"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }

@@ -9,7 +9,7 @@ const blogLink = import.meta.env.DEV
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="app-container">
         <nav
           style={{
@@ -58,8 +58,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<div className="main-container"><NalityAV /></div>} />
-          <Route path="/compare-stt/" element={<div className="embedded-app"><STTComparison /></div>} />
-          <Route path="/lorenz-synth/" element={<div className="embedded-app"><LorenzSynthApp /></div>} />
+          <Route path="/compare-stt" element={<div className="embedded-app"><STTComparison /></div>} />
+          <Route path="/lorenz-synth" element={<div className="embedded-app"><LorenzSynthApp /></div>} />
         </Routes>
       </div>
     </Router>
